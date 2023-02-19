@@ -1,9 +1,11 @@
 "use strict";
-// let a: number = 12
-// let b: number = 6
-// let c: number = 2
-// console.log(a / b)
-// console.log(c * b)
-let x = 100;
-let y = 300;
-console.log(y / x);
+let stringArr = ['one', 'hey', 'Dave'];
+let guitars = ['Strat', 'Les Paul', 5150];
+let mixedData = ['EVH', 1984, true];
+stringArr[0] = 'John';
+stringArr.push('hey');
+guitars[0] = 1984;
+guitars.unshift('Jim');
+let test = [];
+let bands = [];
+bands.push('Van Halen');

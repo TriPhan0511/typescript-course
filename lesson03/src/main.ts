@@ -1,11 +1,15 @@
-// let a: number = 12
-// let b: number = 6
-// let c: number = 2
+let stringArr = ['one', 'hey', 'Dave']
 
-// console.log(a / b)
-// console.log(c * b)
+let guitars = ['Strat', 'Les Paul', 5150]
 
-let x: number = 100
-let y: number = 300
+let mixedData = ['EVH', 1984, true]
 
-console.log(y / x)
+stringArr[0] = 'John'
+stringArr.push('hey')
+
+guitars[0] = 1984
+guitars.unshift('Jim')
+
+let test = []
+let bands: string[] = []
+bands.push('Van Halen')

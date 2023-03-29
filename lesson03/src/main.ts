@@ -29,8 +29,52 @@ myObject = bands
 myObject = {}
 
 const exampleObj = {
-  prop1: 'Dave',
-  prop2: true,
+	prop1: 'Dave',
+	prop2: true,
 }
 
 exampleObj.prop1 = 'John'
+
+// type Guitarist = {
+// 	name: string
+// 	active?: boolean
+// 	albums: (string | number)[]
+// }
+
+interface Guitarist {
+	name?: string
+	active: boolean
+	albums: (string | number)[]
+}
+
+let evh: Guitarist = {
+	name: 'John',
+	active: false,
+	albums: [1984, 5150, 'OU812'],
+}
+
+let jp: Guitarist = {
+	// name: 'Jimmy',
+	active: true,
+	albums: ['I', 'II', 'IV'],
+}
+
+const greetGuitarist = (guitarist: Guitarist) => {
+	if (guitarist.name) {
+		return `Hello, ${guitarist.name.toUpperCase()}!`
+	}
+	return 'Hello!'
+}
+
+console.log(greetGuitarist(jp))
+
+// Enums
+enum Grade {
+	U = 1,
+	D,
+	C,
+	B,
+	A,
+}
+
+console.log(Grade.A)

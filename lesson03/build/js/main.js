@@ -13,5 +13,14 @@ bands.push('Van Halen');
 let myTuple = ['Dave', 42, true];
 console.log('🚀 ~ myTuple:', myTuple);
 let mixed = ['John', 1, false];
-myTuple[2] = 42;
-console.log('🚀 ~ myTuple:', myTuple);
+// Objects
+let myObject;
+myObject = [];
+console.log(typeof myObject);
+myObject = bands;
+myObject = {};
+const exampleObj = {
+    prop1: 'Dave',
+    prop2: true,
+};
+exampleObj.prop1 = 'John';

@@ -1,104 +1,34 @@
-// Type Aliases
-type stringOrNumber = string | number
+type One = string
+type Two = string | number
+type Three = 'hello'
 
-type stringOrNumberArray = (string | number)[]
+// Convert to more or less specific
+let a: One = 'hello'
+let b = a as Two // less specific
+let c = a as Three // more specific
 
-type Guitarist = {
-  name?: string
-  active: boolean
-  albums: stringOrNumberArray
-}
+let d = <One>'world'
+let e = <string | number>'world'
 
-type UserId = stringOrNumber
-
-// Literal Types
-let myName: 'Dave'
-
-let userName: 'Dave' | 'John' | 'Amy'
-userName = 'Dave'
-
-// Functions
-
-const add = (a: number, b: number): number => {
-  return a + b
-}
-
-const logMsg = (message: any): void => {
-  console.log(message)
-}
-
-logMsg('Hello')
-logMsg(add(1, 2))
-
-let subtract = function (c: number, d: number): number {
-  return c - d
-}
-
-// interface mathFunction {
-//   (a: number, b: number): number
-// }
-
-type mathFunction = (a: number, b: number) => number
-
-let multiply: mathFunction = function (c, d) {
-  return c * d
-}
-
-logMsg(multiply(2, 10))
-
-// Optional Parameters
-const addAll = (a: number, b: number, c?: number): number => {
-  if (typeof c !== 'undefined') {
-    return a + b + c
+const addOrConcat = (a: number, b: number, c: 'add' | 'concat'): number | string => {
+  if (c === 'add') {
+    return a + b
   }
-  return a + b
+  return '' + a + b
 }
 
-// Default Param Value
-const sumAll = (a: number = 10, b: number, c: number = 2): number => {
-  return a + b + c
-}
+let myVal: string = addOrConcat(2, 2, 'concat') as string
 
-logMsg(addAll(2, 3, 2))
-logMsg(addAll(2, 3))
-logMsg(sumAll(2, 3))
-logMsg(sumAll(undefined, 3))
+// Be careful! TS sees no problem - but a string is returned
+let nexVal: number = addOrConcat(2, 2, 'concat') as number
 
-// Rest Parameters
-const total = (a: number, ...nums: number[]): number => {
-  return a * nums.reduce((previous, current) => previous + current)
-}
+// 10 as string // Error
+10 as unknown as string
 
-logMsg(total(2, 3, 4))
+// The DOM
+const img = document.querySelector('img')!
+const myImg = document.getElementById('#img') as HTMLImageElement
+const nextImg = <HTMLImageElement>document.getElementById('#img')
 
-// The never type
-const createError = (msg: string): never => {
-  throw new Error(msg)
-}
-
-const infinite = () => {
-  let i: number = 1
-  while (true) {
-    i++
-    if (i > 100) {
-      break
-    }
-  }
-}
-
-// Custom type guard
-const isNumber = (value: any): boolean => {
-  return typeof value === 'number'
-}
-
-// Use of the never type
-const numberOrString = (value: number | string): string => {
-  if (typeof value === 'string') {
-    return 'string'
-  }
-  if (isNumber(value)) {
-    return 'number'
-  }
-
-  return createError('This should never happen!')
-}
+img.src
+myImg.src

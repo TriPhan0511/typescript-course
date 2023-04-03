@@ -30,6 +30,57 @@ class WebDev extends Coder {
 }
 const sara = new WebDev('Mac', 'Sara', 'Lofi', 25);
 console.log(sara.getLang());
-// console.log(sara.age) // Error
-// console.log(sara.lang) // Error
+class Guitarist {
+    constructor(name, instrument) {
+        this.name = name;
+        this.instrument = instrument;
+    }
+    play(action) {
+        return `${this.name} ${action} ${this.instrument}`;
+    }
+}
+const page = new Guitarist('Jimmy', 'guitar');
+console.log(page.play('strums'));
 // //////////////////////////////////////////////////////////////////////////
+class Peeps {
+    static getCount() {
+        return Peeps.count;
+    }
+    constructor(name) {
+        this.name = name;
+        this.name = name;
+        this.id = ++Peeps.count;
+    }
+}
+Peeps.count = 0;
+const john = new Peeps('John');
+const steve = new Peeps('Steve');
+const amy = new Peeps('Amy');
+console.log(Peeps.count);
+console.log('john.id', john.id);
+console.log('steve.id', steve.id);
+console.log('amy.id', amy.id);
+// //////////////////////////////////////////////////////////////////////////
+class Bands {
+    constructor() {
+        this.dataState = [];
+    }
+    get data() {
+        return this.dataState;
+    }
+    set data(value) {
+        if (Array.isArray(value) && value.every((e) => typeof e === 'string')) {
+            this.dataState = value;
+            return;
+        }
+        else {
+            throw new Error('Param is not an array of strings.');
+        }
+    }
+}
+const myBands = new Bands();
+myBands.data = ['Neil Young', 'Led Zep'];
+console.log(myBands.data);
+myBands.data = [...myBands.data, 'ZZ Top'];
+console.log(myBands.data);
+myBands.data = ['Van Halen', 5544];
